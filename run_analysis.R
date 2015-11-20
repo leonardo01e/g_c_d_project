@@ -17,16 +17,15 @@ download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUC
 unzip("data.zip")
 
 # Reading all important .txt files of extracted file "data.zip"
-# Remember: Set the files folder as "working directory" before read
 
-features <- read.table("features.txt")
-activity_labels <- read.table("activity_labels.txt")
-subject_test <- read.table("subject_test.txt")
-x_test <- read.table("X_test.txt")
-y_test <- read.table("y_test.txt")
-subject_train <- read.table("subject_train.txt")
-x_train <- read.table("X_train.txt")
-y_train <- read.table("y_train.txt")
+features <- read.table("UCI HAR Dataset/features.txt")
+activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt")
+subject_test <- read.table("UCI HAR Dataset/test/subject_test.txt")
+x_test <- read.table("UCI HAR Dataset/test/X_test.txt")
+y_test <- read.table("UCI HAR Dataset/test/y_test.txt")
+subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt")
+x_train <- read.table("UCI HAR Dataset/train/X_train.txt")
+y_train <- read.table("UCI HAR Dataset/train/y_train.txt")
 
 # initializing some R libraries used in this script
 
@@ -58,36 +57,33 @@ total <- bind_rows(training, test)
 
 # Puting the labels in the variables of "total" dataser using "features" dataset
 # Indentifying the indexes of duplicated (if exist) labels in "features" 
-
 # Vector dup receiving duplicated labels. If duplicated, then number 1 is assigned, else 0.
+
 dup <- as.numeric(duplicated(features$V2))
 
 ind <-vector() #initializing vector ind
 j <- 0
-for (i in 1:561){ #number of labels in the features$V2
+for (i in 1:length(features$V2)){ #number of labels in the features$V2
   if (dup[i]==1){ # if equal 1, means that there is a duplicated label
      j <- j+1
-     ind[j] <- i # vector that contains the indexes of duplicated labels in features.
+     ind[j] <- i + 2 # vector that contains the indexes of duplicated labels in features. The + 2 is to pull the first 2 factors in the next total_nodup data set.
   }
 }
 
 # There is some duplicated labels
 # Removing duplicated labels from features using unique function
-features_nodup <- unique(features$V2)
+
+features_nodup <- as.data.frame(unique(features$V2))
 
 # using the indexes of duplicated features of ind vector to exclude them from dataframe total
 
-total_nodup <- total[,-c(319:346,398:425, 477:504)]
+total_nodup <- total[,-ind]
 # total_nodup: total with no duplicated label
 
 # Applying the correct label to the variables in total_nodup dataset 
-for (i in 3:479){ # start in 3 because the first two factor are named already
-  names(total_nodup)[i] <- as.character(features_nodup[i-2,1])
+for (i in 3:length(total_nodup)){ # start in 3 because the first two factor are named already
+  names(total_nodup)[i] <- as.character(features_nodup[i-2, 1])
 }
-
-# Checking new names variables
-
-names(total_nodup)
 
 # Selecting only variables related to the "mean" and "std"
 
@@ -106,6 +102,7 @@ total_final <- bind_cols(tmp_mean, tmp_std[,-c(1,2)])
 # activity using the names in activity_label dataset
 
 library(car)
+
 total_final$activity <- recode(total_final$activity, "1 = 'WALKING'; 2 = 'WALKING_UPSTAIRS'; 3 = 'WALKING_DOWNSTAIRS'; 4 = 'SITTING'; 5 = 'STANDING'; 6 = 'LAYING'")
 
 # 4 - Appropriately labels the data set with descriptive variable names.
@@ -114,25 +111,14 @@ total_final$activity <- recode(total_final$activity, "1 = 'WALKING'; 2 = 'WALKIN
 
 actual_names <- as.data.frame(names(total_final))
 
-# export actual_names to .csv file. (reason: This will help to create a new file with descriptive variable names)
+# creating a data frame with the new labels
 
-write.csv(actual_names, "actual_names.csv")
-
-# Manualy edit new two files in libreoffice calc, then save in .csv files
-
-# first, the codification table (table to relate the old labels with the new ones)
-# read this file and store in cod_table dataset
-
-cod_table <- read.csv(codification_of_labels_table.csv, header = TRUE)
-
-# second, separate only the columns with the new labels
-# read this file and store in new_names dataset
-
-new_names <- read.csv("new_names.csv", header = TRUE)
+aux <- c("id_subject", "type_of_activity", "time_BodyACC_X_mean", "time_BodyACC_Y_mean", "time_BodyACC_Z_mean", "time_GravityACC_X_mean", "time_GravityACC_Y_mean", "time_GravityACC_Z_mean", "time_BodyACC_Jerk_X_mean", "time_BodyACC_Jerk_Y_mean", "time_BodyACC_Jerk_Z_mean", "time_BodyGYRO_X_mean", "time_BodyGYRO_Y_mean", "time_BodyGYRO_Z_mean", "time_BodyGYRO_Jerk_X_mean", "time_BodyGYRO_Jerk_Y_mean", "time_BodyGYRO_Jerk_Z_mean", "time_BodyACC_Mag_mean", "time_GravityACC_Mag_mean", "time_BodyACC_Jerk_Mag_mean", "time_BodyGYRO_Mag_mean", "time_BodyGYRO_Jerk_Mag_mean", "frequency_BodyACC_X_mean", "frequency_BodyACC_Y_mean", "frequency_BodyACC_Z_mean", "frequency_BodyACC_X_Freq_Mean", "frequency_BodyACC_Y_Freq_Mean", "frequency_BodyACC_Z_Freq_Mean", "frequency_BodyACC_Jerk_X_mean", "frequency_BodyACC_Jerk_Y_mean", "frequency_BodyACC_Jerk_Z_mean", "frequency_BodyACC_Jerk_X_Freq_Mean", "frequency_BodyACC_Jerk_Y_Freq_Mean", "frequency_BodyACC_Jerk_Z_Freq_Mean", "frequency_BodyGYRO_X_mean", "frequency_BodyGYRO_Y_mean", "frequency_BodyGYRO_Z_mean", "frequency_BodyGYRO_Jerk_X_Freq_Mean", "frequency_BodyGYRO_Jerk_Y_Freq_Mean", "frequency_BodyGYRO_Jerk_Z_Freq_Mean", "frequency_BodyACC_Mag_mean", "frequency_BodyACC_Mag_Freq_Mean", "frequency_BodyACC_Jerk_Mag_mean", "frequency_BodyACC_Jerk_Mag_Freq_Mean", "frequency_BodyGYRO_Mag_mean", "frequency_BodyGYRO_Mag_Freq_Mean", "frequency_BodyGYRO_Jerk_Mag_mean", "frequency_BodyGYRO_Jerk_Mag_Freq_Mean", "angle_(timeBodyACC_mean_Gravity)", "angle_(timeBodyACC_Jerk_mean_Gravity_mean)", "angle_(timeBodyGYRO_mean_Gravity_mean)", "angle_(timeBodyGYRO_Jerk_mean_Gravity_mean)", "angle_(X_Gravity_mean)", "angle_(Y_Gravity_mean)", "angle_(Z_Gravity_mean)", "time_BodyACC_X_std", "time_BodyACC_Y_std", "time_BodyACC_Z_std", "time_GravityACC_X_std", "time_GravityACC_Y_std", "time_GravityACC_Z_std", "time_BodyACC_Jerk_X_std", "time_BodyACC_Jerk_Y_std", "time_BodyACC_Jerk_Z_std", "time_BodyGYRO_X_std", "time_BodyGYRO_Y_std", "time_BodyGYRO_Z_std", "time_BodyGYRO_Jerk_X_std", "time_BodyGYRO_Jerk_Y_std", "time_BodyGYRO_Jerk_Z_std", "time_BodyACC_Mag_std", "time_GravityACC_Mag_std", "time_BodyACC_Jerk_Mag_std", "time_BodyGYRO_Mag_std", "time_BodyGYRO_Jerk_Mag_std", "frequency_BodyACC_X_std", "frequency_BodyACC_Y_std", "frequency_BodyACC_Z_std", "frequency_BodyACC_Jerk_X_std", "frequency_BodyACC_Jerk_Y_std", "frequency_BodyACC_Jerk_Z_std", "frequency_BodyGYRO_X_std", "frequency_BodyGYRO_Y_std", "frequency_BodyGYRO_Z_std", "frequency_BodyACC_Mag_std", "frequency_BodyACC_Jerk_Mag_std", "frequency_BodyGYRO_Mag_std", "frequency_BodyGYRO_Jerk_Mag_std") 
+new_names <- as.data.frame(aux)
 
 # rename the total_final dataset using new_names
 
-for (i in 1:88){ # 88 is the total of variables of total_final dataset
+for (i in 1:length(total_final)){ 
   names(total_final)[i] <- as.character(new_names[i,1])
 }
 
@@ -142,8 +128,6 @@ total_final$id_subject <- as.factor(total_final$id_subject)
 total_final$type_of_activity <- as.factor(total_final$type_of_activity)
 
 # Finally the tidy dataset is ready.
-
-view(total_final)
 
 # 5 - From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
