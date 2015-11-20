@@ -1,0 +1,2225 @@
+---
+title: "CodeBook"
+author: "Leonardo R Alves"
+date: "November 19, 2015"
+output: html_document
+---
+#Project Description
+
+This sample is based on the Human Activity Recognition Using Smartphone Dataset. The goal is to prepare tidy data that can be used for later analysis
+
+#Study design 
+
+The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist.
+
+##Collection of the raw data and data processing
+
+Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
+
+The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain.
+
+For each record it is provided:
+
+* Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration.
+* Triaxial Angular velocity from the gyroscope. 
+* A 561-feature vector with time and frequency domain variables. 
+* Its activity label. 
+* An identifier of the subject who carried out the experiment.
+
+#Creating the tidy datafile
+
+##Guide to create the tidy data file
+* 1 - Download the data
+* 2 - Merge Training and Test data sets
+* 3 - Extracts only the measurements on the mean and standard deviation for each measurement
+* 4 - Uses descriptive activity names to name the activities in the data set
+* 5 - Appropriately labels the data set with descriptive variable names
+* 6 - Creates a tidy data set with the average of each variable for each activity and each subject
+
+##Cleaning of the data
+
+The R Script used to cleaning of the data (see README.md)
+
+#Description of the variables in the HAR_Smartphones_tidy.txt file
+
+* dim(HAR_Smartphones_tidy)
+  [1] 180  88
+
+Variables present in HAR_Smartphones_tidy:
+
+1	id_subject
+2	type_of_activity
+3	time_BodyACC_X_mean
+4	time_BodyACC_Y_mean
+5	time_BodyACC_Z_mean
+6	time_GravityACC_X_mean
+7	time_GravityACC_Y_mean
+8	time_GravityACC_Z_mean
+9	time_BodyACC_Jerk_X_mean
+10	time_BodyACC_Jerk_Y_mean
+11	time_BodyACC_Jerk_Z_mean
+12	time_BodyGYRO_X_mean
+13	time_BodyGYRO_Y_mean
+14	time_BodyGYRO_Z_mean
+15	time_BodyGYRO_Jerk_X_mean
+16	time_BodyGYRO_Jerk_Y_mean
+17	time_BodyGYRO_Jerk_Z_mean
+18	time_BodyACC_Mag_mean
+19	time_GravityACC_Mag_mean
+20	time_BodyACC_Jerk_Mag_mean
+21	time_BodyGYRO_Mag_mean
+22	time_BodyGYRO_Jerk_Mag_mean
+23	frequency_BodyACC_X_mean
+24	frequency_BodyACC_Y_mean
+25	frequency_BodyACC_Z_mean
+26	frequency_BodyACC_X_Freq_Mean
+27	frequency_BodyACC_Y_Freq_Mean
+28	frequency_BodyACC_Z_Freq_Mean
+29	frequency_BodyACC_Jerk_X_mean
+30	frequency_BodyACC_Jerk_Y_mean
+31	frequency_BodyACC_Jerk_Z_mean
+32	frequency_BodyACC_Jerk_X_Freq_Mean
+33	frequency_BodyACC_Jerk_Y_Freq_Mean
+34	frequency_BodyACC_Jerk_Z_Freq_Mean
+35	frequency_BodyGYRO_X_mean
+36	frequency_BodyGYRO_Y_mean
+37	frequency_BodyGYRO_Z_mean
+38	frequency_BodyGYRO_Jerk_X_Freq_Mean
+39	frequency_BodyGYRO_Jerk_Y_Freq_Mean
+40	frequency_BodyGYRO_Jerk_Z_Freq_Mean
+41	frequency_BodyACC_Mag_mean
+42	frequency_BodyACC_Mag_Freq_Mean
+43	frequency_BodyACC_Jerk_Mag_mean
+44	frequency_BodyACC_Jerk_Mag_Freq_Mean
+45	frequency_BodyGYRO_Mag_mean
+46	frequency_BodyGYRO_Mag_Freq_Mean
+47	frequency_BodyGYRO_Jerk_Mag_mean
+48	frequency_BodyGYRO_Jerk_Mag_Freq_Mean
+49	angle_(timeBodyACC_mean_Gravity)
+50	angle_(timeBodyACC_Jerk_mean_Gravity_mean)
+51	angle_(timeBodyGYRO_mean_Gravity_mean)
+52	angle_(timeBodyGYRO_Jerk_mean_Gravity_mean)
+53	angle_(X_Gravity_mean)
+54	angle_(Y_Gravity_mean)
+55	angle_(Z_Gravity_mean)
+56	time_BodyACC_X_std
+57	time_BodyACC_Y_std
+58	time_BodyACC_Z_std
+59	time_GravityACC_X_std
+60	time_GravityACC_Y_std
+61	time_GravityACC_Z_std
+62	time_BodyACC_Jerk_X_std
+63	time_BodyACC_Jerk_Y_std
+64	time_BodyACC_Jerk_Z_std
+65	time_BodyGYRO_X_std
+66	time_BodyGYRO_Y_std
+67	time_BodyGYRO_Z_std
+68	time_BodyGYRO_Jerk_X_std
+69	time_BodyGYRO_Jerk_Y_std
+70	time_BodyGYRO_Jerk_Z_std
+71	time_BodyACC_Mag_std
+72	time_GravityACC_Mag_std
+73	time_BodyACC_Jerk_Mag_std
+74	time_BodyGYRO_Mag_std
+75	time_BodyGYRO_Jerk_Mag_std
+76	frequency_BodyACC_X_std
+77	frequency_BodyACC_Y_std
+78	frequency_BodyACC_Z_std
+79	frequency_BodyACC_Jerk_X_std
+80	frequency_BodyACC_Jerk_Y_std
+81	frequency_BodyACC_Jerk_Z_std
+82	frequency_BodyGYRO_X_std
+83	frequency_BodyGYRO_Y_std
+84	frequency_BodyGYRO_Z_std
+85	frequency_BodyACC_Mag_std
+86	frequency_BodyACC_Jerk_Mag_std
+87	frequency_BodyGYRO_Mag_std
+88	frequency_BodyGYRO_Jerk_Mag_std
+
+## 1 - id_subject
+Identification number of each subject.
+
+* Class: Factor
+* 30 levels: "1","2","3",..."29","30"
+
+## 2 - type_of_activity
+
+Identification of type of activity in the test
+
+* Class: Factor
+* 6 levels: "WALKING", "WALKING_UPSTAIRS", "WALKING DOWNSTAIRS", "SITTING", "STANDING", "LAYING"
+
+## 3 - time_BodyACC_X_mean
+
+Numeric variable. Mean from Normalised time domain signals of body acceleration signals from the smartphone accelerometer X axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 4 - time_BodyACC_Y_mean
+
+Numeric variable. Mean from Normalised time domain signals of body acceleration signals from the smartphone accelerometer Y axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 5 - time_BodyACC_Z_mean
+
+Numeric variable. Mean from Normalised time domain signals of body acceleration signals from the smartphone accelerometer Z axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 6 - time_GravityACC_X_mean
+
+Numeric variable. Mean from Normalised time domain signals of gravity acceleration signals from the smartphone accelerometer X axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 7 - time_GravityACC_Y_mean
+
+Numeric variable. Mean from Normalised time domain signals of gravity acceleration signals from the smartphone accelerometer Y axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 8 - time_GravityACC_Z_mean
+
+Numeric variable. Mean from Normalised time domain signals of gravity acceleration signals from the smartphone accelerometer Z axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 9 - time_BodyACC_Jerk_X_mean
+
+Numeric variable. Mean from Normalised time domain signals of body_Jerk acceleration signals from the smartphone accelerometer X axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 10 - time_BodyACC_Jerk_Y_mean
+
+Numeric variable. Mean from Normalised time domain signals of body_Jerk acceleration signals from the smartphone accelerometer Y axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 11 - time_BodyACC_Jerk_Z_mean
+
+Numeric variable. Mean from Normalised time domain signals of body_Jerk acceleration signals from the smartphone accelerometer Z axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 12 - time_BodyGYRO_X_mean
+
+Numeric variable. Mean from Normalised time domain signals of body gyroscope signals from the smartphone accelerometer X axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 13 - time_BodyGYRO_Y_mean
+
+Numeric variable. Mean from Normalised time domain signals of body gyroscope signals from the smartphone accelerometer Y axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 14 - time_BodyGYRO_Z_mean
+
+Numeric variable. Mean from Normalised time domain signals of body gyroscope signals from the smartphone accelerometer Z axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 15 - time_BodyGYRO_Jerk_X_mean
+
+Numeric variable. Mean from Normalised time domain signals of body_Jerk gyroscope signals from the smartphone accelerometer X axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 16 - time_BodyGYRO_Jerk_Y_mean
+
+Numeric variable. Mean from Normalised time domain signals of body_Jerk gyroscope signals from the smartphone accelerometer Y axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 17 - time_BodyGYRO_Jerk_Z_mean
+
+Numeric variable. Mean from Normalised time domain signals of body_Jerk gyroscope signals from the smartphone accelerometer Z axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 18 - time_BodyACC_Mag_mean
+
+Numeric variable. Mean from Normalised time domain signals of body_Mag acceleration signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 19 - time_GravityACC_Mag_mean
+
+Numeric variable. Mean from Normalised time domain signals of gravity_Mag acceleration signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 20 - time_BodyACC_Jerk_Mag_mean
+
+Numeric variable. Mean from Normalised time domain signals of body_Jerk_Mag acceleration signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 21 - time_BodyGYRO_Mag_mean
+
+Numeric variable. Mean from Normalised time domain signals of body_Mag gyroscope signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 22 - time_BodyGYRO_Jerk_Mag_mean
+
+Numeric variable. Mean from Normalised time domain signals of body_Jerk_Mag gyroscope signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 23 - frequency_BodyACC_X_mean
+
+Numeric variable. Mean from Normalised frequency domain signals of body acceleration signals from the smartphone accelerometer X axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 24 - frequency_BodyACC_Y_mean
+
+Numeric variable. Mean from Normalised frequency domain signals of body acceleration signals from the smartphone accelerometer Y axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 25 - frequency_BodyACC_Z_mean
+
+Numeric variable. Mean from Normalised frequency domain signals of body acceleration signals from the smartphone accelerometer Z axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 26 - frequency_BodyACC_X_Freq_mean
+
+Numeric variable. Weighted average of the frequency from Normalised frequency domain signals of body acceleration signals from the smartphone accelerometer X axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* mean: mean
+* std: Standard Deviation
+* Freq_Mean: Weighted average of the frequency components to obtain a mean frequency
+
+## 27 - frequency_BodyACC_Y_Freq_Mean
+
+Numeric variable. Weighted average of the frequency from Normalised frequency domain signals of body acceleration signals from the smartphone accelerometer Y axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* mean: mean
+* std: Standard Deviation
+* Freq_Mean: Weighted average of the frequency components to obtain a mean frequency
+
+## 28 - frequency_BodyACC_Z_Freq_Mean
+
+Numeric variable. Weighted average of the frequency from Normalised frequency domain signals of body acceleration signals from the smartphone accelerometer Z axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* mean: mean
+* std: Standard Deviation
+* Freq_Mean: Weighted average of the frequency components to obtain a mean frequency
+
+## 29 - frequency_BodyACC_Jerk_X_mean
+
+Numeric variable. Mean from Normalised frequency domain signals of Body_Jerk acceleration signals from the smartphone accelerometer X axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 30 - frequency_BodyACC_Jerk_Y_mean
+
+Numeric variable. Mean from Normalised frequency domain signals of Body_Jerk acceleration signals from the smartphone accelerometer Y axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 31 - frequency_BodyACC_Jerk_Z_mean
+
+Numeric variable. Mean from Normalised frequency domain signals of Body_Jerk acceleration signals from the smartphone accelerometer Z axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 32 - frequency_BodyACC_Jerk_X_Freq_mean
+
+Numeric variable. Weighted average of the frequency from Normalised frequency domain signals of body_Jerk acceleration signals from the smartphone accelerometer X axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* mean: mean
+* std: Standard Deviation
+* Freq_Mean: Weighted average of the frequency components to obtain a mean frequency
+
+## 33 - frequency_BodyACC_Jerk_Y_Freq_Mean
+
+Numeric variable. Weighted average of the frequency from Normalised frequency domain signals of body_Jerk acceleration signals from the smartphone accelerometer Y axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* mean: mean
+* std: Standard Deviation
+* Freq_Mean: Weighted average of the frequency components to obtain a mean frequency
+
+## 34 - frequency_BodyACC_Jerk_Z_Freq_Mean
+
+Numeric variable. Weighted average of the frequency from Normalised frequency domain signals of body_Jerk acceleration signals from the smartphone accelerometer Z axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* mean: mean
+* std: Standard Deviation
+* Freq_Mean: Weighted average of the frequency components to obtain a mean frequency
+
+## 35 - frequency_BodyGYRO_X_mean
+
+Numeric variable. Mean from Normalised frequency domain signals of body gyroscope signals from the smartphone accelerometer X axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 36 - frequency_BodyGYRO_Y_mean
+
+Numeric variable. Mean from Normalised frequency domain signals of body gyroscope signals from the smartphone accelerometer Y axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 37 - frequency_BodyGYRO_Z_mean
+
+Numeric variable. Mean from Normalised frequency domain signals of body gyroscope signals from the smartphone accelerometer Z axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 38 - frequency_BodyGYRO_Jerk_X_Freq_mean
+
+Numeric variable. Weighted average of the frequency from Normalised frequency domain signals of body_Jerk gyroscope signals from the smartphone accelerometer X axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* mean: mean
+* std: Standard Deviation
+* Freq_Mean: Weighted average of the frequency components to obtain a mean frequency
+
+## 39 - frequency_BodyGYRO_Jerk_Y_Freq_Mean
+
+Numeric variable. Weighted average of the frequency from Normalised frequency domain signals of body_Jerk gyroscope signals from the smartphone accelerometer Y axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* mean: mean
+* std: Standard Deviation
+* Freq_Mean: Weighted average of the frequency components to obtain a mean frequency
+
+## 40 - frequency_BodyGYRO_Jerk_Z_Freq_Mean
+
+Numeric variable. Weighted average of the frequency from Normalised frequency domain signals of body_Jerk gyroscope signals from the smartphone accelerometer Z axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* mean: mean
+* std: Standard Deviation
+* Freq_Mean: Weighted average of the frequency components to obtain a mean frequency
+
+## 41 - frequency_BodyACC_Mag_mean
+
+Numeric variable. Mean from Normalised time domain signals of body_Mag acceleration signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 42 - frequency_BodyACC_Mag_Freq_Mean
+
+Numeric variable. Weighted average of the frequency from Normalised frequency domain signals of body_Mag accelerometer signals from the smartphone observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* mean: mean
+* std: Standard Deviation
+* Freq_Mean: Weighted average of the frequency components to obtain a mean frequency
+
+## 43 - frequency_BodyACC_Jerk_Mag_mean
+
+Numeric variable. Mean from Normalised time domain signals of body_Jerk_Mag acceleration signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 44 - frequency_BodyACC_Jerk_Mag_Freq_Mean
+
+Numeric variable. Weighted average of the frequency from Normalised frequency domain signals of body_Jerk_Mag accelerometer signals from the smartphone observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* mean: mean
+* std: Standard Deviation
+* Freq_Mean: Weighted average of the frequency components to obtain a mean frequency
+
+## 45 - frequency_BodyGYRO_Mag_mean
+
+Numeric variable. Mean from Normalised time domain signals of body_Mag gyroscope signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 46 - frequency_BodyGYRO_Mag_Freq_Mean
+
+Numeric variable. Weighted average of the frequency from Normalised frequency domain signals of body_Mag gyroscope signals from the smartphone observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* mean: mean
+* std: Standard Deviation
+* Freq_Mean: Weighted average of the frequency components to obtain a mean frequency
+
+## 47 - frequency_BodyGYRO_Jerk_Mag_mean
+
+Numeric variable. Mean from Normalised time domain signals of body_Jerk_Mag gyroscope signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 48 - frequency_BodyGYRO_Jerk_Mag_Freq_Mean
+
+Numeric variable. Weighted average of the frequency from Normalised frequency domain signals of body_Jerk_Mag gyroscope signals from the smartphone observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* mean: mean
+* std: Standard Deviation
+* Freq_Mean: Weighted average of the frequency components to obtain a mean frequency
+
+
+## 49 - angle_(timeBodyACC_mean_Gravity)
+
+Numeric variable. Mean from Normalised angle of vectors from time domain signals of body and gravity acceleration signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+* angle: angle of vectors
+
+## 50 - angle_(timeBodyACC_Jerk_mean_Gravity_mean)
+
+Numeric variable. Mean from Normalised angle of vectors from time domain signals of body_Jerk and gravity acceleration signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+* angle: angle of vectors
+
+## 51 - angle_(timeBodyGYRO_mean_Gravity_mean)
+
+Numeric variable. Mean from Normalised angle of vectors from time domain signals of body and gravity gyroscope signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+* angle: angle of vectors
+
+## 52 - angle_(timeBodyGYRO_Jerk_mean_Gravity_mean)
+
+Numeric variable. Mean from Normalised angle of vectors from time domain signals of body_Jerk and gravity gyroscope signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+* angle: angle of vectors
+
+## 53 - angle_(X_Gravity_mean)
+
+Numeric variable. Mean from Normalised angle of vectors from domain signals of X-axis and gravity signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+* angle: angle of vectors
+
+## 54 - angle_(Y_Gravity_mean)
+
+Numeric variable. Mean from Normalised angle of vectors from domain signals of Y-axis and gravity signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+* angle: angle of vectors
+
+## 55 - angle_(Z_Gravity_mean)
+
+Numeric variable. Mean from Normalised angle of vectors from domain signals of Z-axis and gravity signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+* angle: angle of vectors
+
+## 56 - time_BodyACC_X_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of body acceleration signals from the smartphone accelerometer X axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 57 - time_BodyACC_Y_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of body acceleration signals from the smartphone accelerometer Y axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 58 - time_BodyACC_Z_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of body acceleration signals from the smartphone accelerometer Z axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 59 - time_GravityACC_X_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of gravity acceleration signals from the smartphone accelerometer X axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 60 - time_GravityACC_Y_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of gravity acceleration signals from the smartphone accelerometer Y axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 61 - time_GravityACC_Z_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of gravity acceleration signals from the smartphone accelerometer Z axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 62 - time_BodyACC_Jerk_X_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of body_Jerk acceleration signals from the smartphone accelerometer X axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 63 - time_BodyACC_Jerk_Y_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of body_Jerk acceleration signals from the smartphone accelerometer Y axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 64 - time_BodyACC_Jerk_Z_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of body_Jerk acceleration signals from the smartphone accelerometer Z axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 65 - time_BodyGYRO_X_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of body gyroscope signals from the smartphone accelerometer X axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 66 - time_BodyGYRO_Y_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of body gyroscope signals from the smartphone accelerometer Y axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 67 - time_BodyGYRO_Z_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of body gyroscope signals from the smartphone accelerometer Z axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 68 - time_BodyGYRO_Jerk_X_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of body_Jerk gyroscope signals from the smartphone accelerometer X axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 69 - time_BodyGYRO_Jerk_Y_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of body_Jerk gyroscope signals from the smartphone accelerometer Y axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 70 - time_BodyGYRO_Jerk_Z_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of body_Jerk gyroscope signals from the smartphone accelerometer Z axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 71 - time_BodyACC_Mag_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of body_Mag acceleration signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 72 - time_GravityACC_Mag_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of gravity_Mag acceleration signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 73 - time_BodyACC_Jerk_Mag_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of body_Jerk_Mag acceleration signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 74 - time_BodyGYRO_Mag_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of body_Mag gyroscope signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 75 - time_BodyGYRO_Jerk_Mag_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of body_Jerk_Mag gyroscope signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 76 - frequency_BodyACC_X_std
+
+Numeric variable. Standard deviation from Normalised frequency domain signals of body acceleration signals from the smartphone accelerometer X axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 77 - frequency_BodyACC_Y_std
+
+Numeric variable. Standard deviation from Normalised frequency domain signals of body acceleration signals from the smartphone accelerometer Y axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 78 - frequency_BodyACC_Z_std
+
+Numeric variable. Standard deviation from Normalised frequency domain signals of body acceleration signals from the smartphone accelerometer Z axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 79 - frequency_BodyACC_Jerk_X_std
+
+Numeric variable. Standard deviation from Normalised frequency domain signals of Body_Jerk acceleration signals from the smartphone accelerometer X axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 80 - frequency_BodyACC_Jerk_Y_std
+
+Numeric variable. Standard deviation from Normalised frequency domain signals of Body_Jerk acceleration signals from the smartphone accelerometer Y axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 81 - frequency_BodyACC_Jerk_Z_std
+
+Numeric variable. Standard deviation from Normalised frequency domain signals of Body_Jerk acceleration signals from the smartphone accelerometer Z axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 82 - frequency_BodyGYRO_X_std
+
+Numeric variable. Standard deviation from Normalised frequency domain signals of body gyroscope signals from the smartphone accelerometer X axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 83 - frequency_BodyGYRO_Y_std
+
+Numeric variable. Standard deviation from Normalised frequency domain signals of body gyroscope signals from the smartphone accelerometer Y axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 84 - frequency_BodyGYRO_Z_std
+
+Numeric variable. Standard deviation from Normalised frequency domain signals of body gyroscope signals from the smartphone accelerometer Z axis observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 85 - frequency_BodyACC_Mag_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of body_Mag acceleration signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 86 - frequency_BodyACC_Jerk_Mag_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of body_Jerk_Mag acceleration signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+
+## 87 - frequency_BodyGYRO_Mag_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of body_Mag gyroscope signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+## 88 - frequency_BodyGYRO_Jerk_Mag_std
+
+Numeric variable. Standard deviation from Normalised time domain signals of body_Jerk_Mag gyroscope signals from the smartphone accelerometer observations.
+
+* Class: Numeric
+* Values within [-1,1]
+
+###Notes
+
+* time: time domain signals
+* frequency: frequency domain sinals
+* Body: Body acceleration
+* Gravity: Gravity acceleration
+* Jerk: Jerk signals (body linear acceleration and angular velocity were derived in time to obtain Jerk signals)
+* Mag: Magnitude (magnitude of these three-dimensional signals were calculated using the Euclidean norm)
+* ACC: Accelerometer (from 3-axial raw signals XYZ)
+* GYRO: Gyroscope (from 3-axial raw signals XYZ)
+* X: axis-X
+* Y: axis-Y
+* Z: axis-Z
+* FREQ: frequency occurences
+* mean: mean
+* std: Standard Deviation
+
+
